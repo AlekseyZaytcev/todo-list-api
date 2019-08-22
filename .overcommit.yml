@@ -1,0 +1,40 @@
+gemfile: .overcommit_gems.rb
+
+PreCommit:
+  ALL:
+    exclude: &default_excludes
+      - 'vendor/**/*'
+      - '.bundle/**/*'
+
+  BundleAudit:
+    enabled: true
+
+  BundleCheck:
+    enabled: true
+
+  BundleOutdated:
+    enabled: true
+
+  Fasterer:
+    enabled: true
+    exclude:
+      - *default_excludes
+
+  Reek:
+    enabled: true
+    exclude:
+      - *default_excludes
+
+  RuboCop:
+    enabled: true
+    on_warn: fail
+    exclude:
+      - *default_excludes
+
+  TrailingWhitespace:
+    enabled: true
+    exclude:
+      - *default_excludes
+
+  IndexTags:
+    enabled: true

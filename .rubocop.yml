@@ -1,0 +1,18 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - bin/**/*
+    - config/**/*
+    - db/**/*
+    - Gemfile
+    - Rakefile
+    - .overcommit_gems.rb
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
+
+Metrics/LineLength:
+  Max: 120
+
+Documentation:
+  Enabled: false

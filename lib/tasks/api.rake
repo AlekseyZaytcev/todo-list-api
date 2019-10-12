@@ -16,7 +16,7 @@ namespace :api do
     end
 
     task html: :md do
-      `aglio -i public/api/docs/v1/documentation.md -o public/api/docs/v1/documentation.html`
+      `aglio --theme-full-width -i public/api/docs/v1/documentation.md -o public/api/docs/v1/documentation.html`
     end
 
     task open: :html do

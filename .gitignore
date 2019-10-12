@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/.vscode
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -18,6 +19,9 @@
 !/storage/.keep
 .byebug_history
 
+# Ignore documentation
+/public/api/docs/v1/documentation.html
+/public/api/docs/v1/documentation.md
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
@@ -25,3 +29,5 @@
 .tags_sorted_by_file
 
 /config/credentials/development.key
+
+/config/credentials/test.key

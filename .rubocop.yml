@@ -14,5 +14,8 @@ AllCops:
 Metrics/LineLength:
   Max: 120
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/requests/**/*
 Style/Documentation:
   Enabled: false

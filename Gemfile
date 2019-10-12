@@ -43,11 +43,14 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop-rails', '~> 2.3'
+  gem 'reek', '~> 5.4'
 end
 
 group :test do
   gem 'database_cleaner', '~> 1.7'
+  gem 'dox', '~> 1.1', require: false
   gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
+  gem 'rspec-json_expectations', '~> 2.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

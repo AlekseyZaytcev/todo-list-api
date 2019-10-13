@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :jwt_authenticatable, jwt_revocation_strategy: JwtBlacklist
 
+  has_many :projects, dependent: :destroy
+
   validates :username, presence: true, uniqueness: true, length: { in: 3..50 }
   validates :password, presence: true,
                        length: { is: 8 },

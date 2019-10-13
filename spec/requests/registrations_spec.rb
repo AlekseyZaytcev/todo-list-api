@@ -26,6 +26,17 @@ RSpec.describe 'User Registrations', type: :request do
       end
 
       it { expect(response.content_type).to eq('application/json; charset=utf-8') }
+      it do
+        expect(response.body).to include_json(
+          'data' => {
+            'id' => User.find_by(username: attributes[:username]).id.to_s,
+            'type' => 'user',
+            'attributes' => {
+              'username' => attributes[:username]
+            }
+          }
+        )
+      end
     end
 
     context 'invalid request' do
@@ -63,10 +74,13 @@ RSpec.describe 'User Registrations', type: :request do
       it { expect(response.content_type).to eq('application/json; charset=utf-8') }
       it do
         expect(response.body).to include_json(
-          id: user.id,
-          username: user.username,
-          created_at: user.created_at.as_json,
-          updated_at: user.updated_at.as_json
+          'data' => {
+            'id' => user.id.to_s,
+            'type' => 'user',
+            'attributes' => {
+              'username' => user.username
+            }
+          }
         )
       end
     end
@@ -74,11 +88,7 @@ RSpec.describe 'User Registrations', type: :request do
     context 'invalid request' do
       before { delete '/users', headers: default_headers }
 
-      it { expect(response).to have_http_status(:unauthorized) }
-      it do
-        expect(JSON.parse(response.body).dig('error'))
-          .to eq('You need to sign in or sign up before continuing.')
-      end
+      it_behaves_like('respond unauthorized')
     end
   end
 end

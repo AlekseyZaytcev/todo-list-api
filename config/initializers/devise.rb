@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require './lib/custom_failure_app'
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -299,5 +301,9 @@ Devise.setup do |config|
 
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.dig(:DEVISE_JWT_SECRET_KEY)
+  end
+
+  config.warden do |manager|
+    manager.failure_app = CustomFailureApp
   end
 end

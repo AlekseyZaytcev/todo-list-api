@@ -29,23 +29,21 @@ RSpec.describe 'User Sessions', type: :request do
       it { expect(response.content_type).to eq('application/json; charset=utf-8') }
       it do
         expect(response.body).to include_json(
-          id: user.id,
-          username: user.username,
-          created_at: user.created_at.as_json,
-          updated_at: user.updated_at.as_json
+          'data' => {
+            'id' => user.id.to_s,
+            'type' => 'user',
+            'attributes' => {
+              'username' => user.username
+            }
+          }
         )
       end
     end
 
     context 'invalid request' do
-      let(:error)       { JSON.parse(response.body).dig('error') }
-      let(:expectation) { 'You need to sign in or sign up before continuing.' }
-
       before { post '/users/sign_in', params: {}, headers: default_headers }
 
-      it { expect(response).to have_http_status(:unauthorized) }
-      it { expect(response.content_type).to eq('application/json; charset=utf-8') }
-      it { expect(error).to eq(expectation) }
+      it_behaves_like('respond unauthorized')
     end
   end
 

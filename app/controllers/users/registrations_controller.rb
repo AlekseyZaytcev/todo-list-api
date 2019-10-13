@@ -15,7 +15,7 @@ module Users
       build_resource(sign_up_params)
 
       if resource.save
-        render json: resource, status: :created
+        render json: UserSerializer.new(resource).serialized_json, status: :created
       else
         render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
       end
@@ -35,7 +35,7 @@ module Users
     def destroy
       resource.destroy
       Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-      render json: resource, status: :ok
+      render json: UserSerializer.new(resource).serialized_json, status: :ok
     end
 
     # GET /resource/cancel

@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }, defaults: { format: :json }
 
-  resources :projects
+  resources :projects do
+    resources :tasks
+  end
+
+  patch 'tasks/:id/complete', to: 'tasks#complete'
+  patch 'tasks/:id/priority', to: 'tasks#update_priority'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

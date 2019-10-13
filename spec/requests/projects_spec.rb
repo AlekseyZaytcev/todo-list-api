@@ -86,7 +86,7 @@ RSpec.describe 'Projects', type: :request do
   describe '# POST /projects' do
     include Docs::V1::Projects::Create
 
-    let(:attributes) { attributes_for(:project, user_id: user.id) }
+    let(:attributes) { attributes_for(:project) }
 
     context 'valid request' do
       before { post '/projects', params: { project: attributes }.to_json, headers: auth_headers(user) }
@@ -180,7 +180,7 @@ RSpec.describe 'Projects', type: :request do
     let(:project) { create(:project, user: user) }
 
     context 'valid request' do
-      let(:attributes) { attributes_for(:project, user_id: user.id) }
+      let(:attributes) { attributes_for(:project) }
 
       before { patch "/projects/#{project.id}", params: { project: attributes }.to_json, headers: auth_headers(user) }
 

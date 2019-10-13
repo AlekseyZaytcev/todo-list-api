@@ -161,6 +161,7 @@ RSpec.describe 'Projects', type: :request do
     context 'invalid request' do
       context 'when project not exists for this user' do
         let(:project) { create(:project) }
+
         before { get "/projects/#{project.id}", headers: auth_headers(user) }
 
         it { expect(response).to have_http_status(:not_found) }
@@ -213,6 +214,7 @@ RSpec.describe 'Projects', type: :request do
     context 'invalid request' do
       context 'when project not exists for this user' do
         let(:project) { create(:project) }
+
         before { patch "/projects/#{project.id}", headers: auth_headers(user) }
 
         it { expect(response).to have_http_status(:not_found) }
@@ -272,6 +274,7 @@ RSpec.describe 'Projects', type: :request do
     context 'invalid request' do
       context 'when project not exists for this user' do
         let(:project) { create(:project) }
+
         before { delete "/projects/#{project.id}", headers: auth_headers(user) }
 
         it { expect(response).to have_http_status(:not_found) }

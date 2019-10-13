@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
+  resources :tasks, only: [] do
+    resources :comments
+  end
+
   patch 'tasks/:id/complete', to: 'tasks#complete'
   patch 'tasks/:id/priority', to: 'tasks#update_priority'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

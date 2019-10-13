@@ -177,6 +177,7 @@ RSpec.describe 'Tasks', type: :request do
     context 'invalid request' do
       context 'when task not exists for this project' do
         let(:task) { create(:task) }
+
         before { get "/projects/#{project.id}/tasks/#{task.id}", headers: auth_headers(user) }
 
         it { expect(response).to have_http_status(:not_found) }
@@ -233,6 +234,7 @@ RSpec.describe 'Tasks', type: :request do
     context 'invalid request' do
       context 'when task not exists for this project' do
         let(:task) { create(:task) }
+
         before { patch "/projects/#{project.id}/tasks/#{task.id}", headers: auth_headers(user) }
 
         it { expect(response).to have_http_status(:not_found) }
@@ -295,6 +297,7 @@ RSpec.describe 'Tasks', type: :request do
     context 'invalid request' do
       context 'when task not exists for this project' do
         let(:task) { create(:task) }
+
         before { delete "/projects/#{project.id}/tasks/#{task.id}", headers: auth_headers(user) }
 
         it { expect(response).to have_http_status(:not_found) }
@@ -348,6 +351,7 @@ RSpec.describe 'Tasks', type: :request do
     context 'invalid request' do
       context 'when task not exists' do
         let(:task) { create(:task) }
+
         before { patch "/tasks/#{task.id}/complete", headers: auth_headers(user) }
 
         it { expect(response).to have_http_status(:not_found) }
@@ -403,6 +407,7 @@ RSpec.describe 'Tasks', type: :request do
     context 'invalid request' do
       context 'when task not exists' do
         let(:task) { create(:task) }
+
         before { patch "/tasks/#{task.id}/priority", params: params, headers: auth_headers(user) }
 
         it { expect(response).to have_http_status(:not_found) }

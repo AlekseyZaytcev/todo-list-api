@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user do
-    username { FFaker::Internet.user_name }
+    username { "test_#{FFaker::Internet.user_name}" }
     password { FFaker::Lorem.characters(8) }
   end
 end

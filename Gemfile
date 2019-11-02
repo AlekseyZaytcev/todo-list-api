@@ -53,6 +53,7 @@ group :test do
   gem 'dox', '~> 1.1', require: false
   gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
   gem 'rspec-json_expectations', '~> 2.2'
+  gem 'simplecov', '~> 0.17.1', require: false, group: :test
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

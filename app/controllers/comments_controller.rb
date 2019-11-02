@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     if resource.save
       render json: CommentSerializer.new(resource).serialized_json, status: :created
     else
-      render json: resource.errors.to_json, status: :conflict
+      render json: resource.errors.to_json, status: :unprocessable_entity
     end
   end
 

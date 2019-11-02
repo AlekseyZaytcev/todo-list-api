@@ -226,7 +226,7 @@ RSpec.describe 'Projects', type: :request do
 
         before { patch "/projects/#{project.id}", params: params, headers: auth_headers(user) }
 
-        it { expect(response).to have_http_status(:conflict) }
+        it { expect(response).to have_http_status(:unprocessable_entity) }
       end
 
       context 'when user unauthorized' do

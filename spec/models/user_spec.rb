@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { create(:user) }
+  subject { build(:user) }
 
   it { is_expected.to have_many(:projects).dependent(:destroy) }
   it { is_expected.to have_many(:tasks).through(:projects) }

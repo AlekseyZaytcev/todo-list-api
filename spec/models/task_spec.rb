@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-  subject { create(:task) }
+  subject { build(:task) }
 
   it { is_expected.to belong_to(:project) }
   it { is_expected.to have_many(:comments).dependent(:destroy) }

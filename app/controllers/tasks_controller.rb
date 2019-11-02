@@ -16,7 +16,7 @@ class TasksController < ApplicationController
     if resource.save
       render json: TaskSerializer.new(resource).serialized_json, status: :created
     else
-      render json: resource.errors.to_json, status: :conflict
+      render json: resource.errors.to_json, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
     if @resource.update(permitted_params)
       render json: TaskSerializer.new(@resource).serialized_json, status: :ok
     else
-      render json: @resource.errors.to_json, status: :conflict
+      render json: @resource.errors.to_json, status: :unprocessable_entity
     end
   end
 

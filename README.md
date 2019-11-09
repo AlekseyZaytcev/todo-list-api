@@ -10,7 +10,8 @@ The idea of the project is a simple tool for productivity improvement. It let th
 A Rails API application that provides endpoints for management next entities:
 User > Projects > Tasks > Comments
 
-[application_on_heroku](https://todolist-endpoints.herokuapp.com)
+#### Hosted on Heroku:
+https://todolist-endpoints.herokuapp.com
 
 [documentation](https://todolist-endpoints.herokuapp.com/api/docs/v1/documentation.html)
 
